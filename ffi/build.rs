@@ -54,7 +54,7 @@ const RTE_CORE_LIBS: &[&str] = &[
     "rte_ip_frag",
     "rte_ipsec",
     "rte_jobstats",
-    "rte_kni",
+//f    "rte_kni",
     "rte_kvargs",
     "rte_latencystats",
     "rte_lpm",
@@ -169,10 +169,10 @@ const RTE_DEPS_LIBS: &[&str] = &["numa", "pcap"];
 
 #[cfg(not(feature = "rustdoc"))]
 fn bind(path: &Path) {
-    cc::Build::new()
-        .file("src/shim.c")
-        .flag("-march=corei7-avx")
-        .compile("rte_shim");
+    // cc::Build::new()
+    //     .file("src/shim.c")
+    //     .flag("-march=corei7-avx")
+    //     .compile("rte_shim");
 
     bindgen::Builder::default()
         .header("src/bindings.h")
