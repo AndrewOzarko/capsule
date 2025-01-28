@@ -169,10 +169,10 @@ const RTE_DEPS_LIBS: &[&str] = &["numa", "pcap"];
 
 #[cfg(not(feature = "rustdoc"))]
 fn bind(path: &Path) {
-    // cc::Build::new()
-    //     .file("src/shim.c")
-    //     .flag("-march=corei7-avx")
-    //     .compile("rte_shim");
+     cc::Build::new()
+         .file("src/shim.c")
+         .flag("-march=corei7-avx")
+         .compile("rte_shim");
 
     bindgen::Builder::default()
         .header("src/bindings.h")
@@ -190,6 +190,7 @@ fn bind(path: &Path) {
         .derive_partialeq(true)
         .default_enum_style(bindgen::EnumVariation::ModuleConsts)
         .clang_arg("-finline-functions")
+        .clang_arg("-fno-lax-vector-conversions")
         .clang_arg("-march=corei7-avx")
         .rustfmt_bindings(true)
         .generate()
