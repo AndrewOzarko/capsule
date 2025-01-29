@@ -190,7 +190,7 @@ fn bind(path: &Path) {
         .derive_partialeq(true)
         .default_enum_style(bindgen::EnumVariation::ModuleConsts)
         .clang_arg("-finline-functions")
-        .clang_arg("-std=c99")
+        .clang_arg("-std=c11")
         .clang_arg("-march=corei7-avx")
         .rustfmt_bindings(true)
         .generate()
