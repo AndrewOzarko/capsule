@@ -54,7 +54,7 @@ const RTE_CORE_LIBS: &[&str] = &[
     "rte_ip_frag",
     "rte_ipsec",
     "rte_jobstats",
-//f    "rte_kni",
+    "rte_kni",
     "rte_kvargs",
     "rte_latencystats",
     "rte_lpm",
@@ -190,7 +190,7 @@ fn bind(path: &Path) {
         .derive_partialeq(true)
         .default_enum_style(bindgen::EnumVariation::ModuleConsts)
         .clang_arg("-finline-functions")
-        .clang_arg("-fno-lax-vector-conversions")
+        .clang_arg("-std=c99")
         .clang_arg("-march=corei7-avx")
         .rustfmt_bindings(true)
         .generate()
